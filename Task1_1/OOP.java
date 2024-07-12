@@ -37,6 +37,5 @@ public class OOP {
         sa1.open();
         sa1.showInfo();
         sa1.close();
-
     }
 }
