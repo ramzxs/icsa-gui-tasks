@@ -1,3 +1,5 @@
+package Task1_1;
+
 public class OOP {
     public static void main(String[] args) {
         System.out.println("JAVA OOP");
@@ -37,5 +39,19 @@ public class OOP {
         sa1.open();
         sa1.showInfo();
         sa1.close();
+
+
+        // ENCAPSULATION
+        Product prod1 = new Product();
+        prod1.setName("");
+        prod1.setPrice(-100.500F);
+
+
+        // POLYMORPHISM
+        Animal a1 = new Animal();
+        a1.makeSound();
+
+        a1 = new Dog();
+        a1 = new Cat();
     }
 }
