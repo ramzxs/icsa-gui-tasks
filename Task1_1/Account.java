@@ -6,7 +6,7 @@ public abstract class Account {
     public abstract void open();
     public abstract void close();
 
-    public void showInfo() {
+    void showInfo() {
         System.out.println("Info");
     }
 }
