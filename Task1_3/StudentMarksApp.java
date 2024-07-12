@@ -3,11 +3,16 @@ public class StudentMarksApp {
         System.out.println("STUDENT MARKS APP (SOLUTION 3)");
 
         // OOP
-        StudentMark[] marks = new StudentMark[3];
-
+        StudentMark[] marks = {
+            new StudentMark("Jane", 40, 20),
+            new StudentMark("Jon", 70, 60),
+            new StudentMark("Stewart", 80, 75)
+        };
+        
+        /* StudentMark[] marks = new StudentMark[3];
         marks[0] = new StudentMark("Jane", 40, 20);
         marks[1] = new StudentMark("Jon", 70, 60);
-        marks[2] = new StudentMark("Stewart", 80, 75);
+        marks[2] = new StudentMark("Stewart", 80, 75); */
 
         System.out.format(
                 "%-20s %10s %10s%n",
