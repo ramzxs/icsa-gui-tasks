@@ -4,6 +4,15 @@ public class StudentMark {
     float gradePhysics;
 
     // CONSTRUCTOR
+    public StudentMark(String s) {
+        this.student = s;
+    }
+
+    public StudentMark(String s, float m) {
+        this.student = s;
+        this.gradeMath = m;
+    }
+
     public StudentMark(String s, float m, float p) {
         this.student = s;
         this.gradeMath = m;

@@ -20,6 +20,5 @@ public class StudentMarksApp {
                     marks[i].gradeMath,
                     marks[i].gradePhysics);
         }
-
     }
 }
