@@ -1,6 +1,7 @@
 package Task2_2;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -10,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
-import javax.swing.plaf.basic.BasicInternalFrameUI.InternalFramePropertyChangeListener;
 
 public class Calculator extends JFrame {
     JLabel lblMain = new JLabel("Text");
@@ -55,6 +55,7 @@ public class Calculator extends JFrame {
         lblMain.setBackground(Color.LIGHT_GRAY);
         lblMain.setAlignmentX(RIGHT_ALIGNMENT);
         lblMain.setAlignmentY(CENTER_ALIGNMENT);
+        lblMain.setFont(new Font("SanSerif", Font.BOLD, 32));
 
 
         /* EVENTS */
