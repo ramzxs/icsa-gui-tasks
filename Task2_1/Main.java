@@ -5,11 +5,13 @@ import java.awt.Button;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Main {
-    public static void main(String[] args) {
-        System.out.println("AWT GUI Counter App (Console)");
+    static int n = 0;
 
+    public static void main(String[] args) {
         Frame f = new Frame("AWT GUI Counter App");
         f.setSize(400, 300);
         f.setLayout(new BorderLayout());
@@ -22,6 +24,15 @@ public class Main {
 
         Button count = new Button("Count");
         count.setFont(font);
+        count.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // int n = Integer.parseInt( counter.getText() ); // "0" -> 0 + 1 = 1 -> "1"
+                // n++; // n = n + 1
+
+                counter.setText( String.valueOf(++n) ); // 0 (0 + 1 -> 1)
+            }
+        });
 
         f.add(counter, BorderLayout.NORTH);
         f.add(count, BorderLayout.SOUTH);
