@@ -1,15 +1,16 @@
 package Task2_2;
 
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
+import javax.swing.plaf.basic.BasicInternalFrameUI.InternalFramePropertyChangeListener;
 
 public class Calculator extends JFrame {
     JLabel lblMain = new JLabel("Text");
@@ -32,6 +33,13 @@ public class Calculator extends JFrame {
         btnDivide = new JButton("/"),
         btnPercent = new JButton("%");
 
+
+    String numLeft = "",
+        opPrev = "",
+        numRight = "",
+        opCurrent = "";
+
+
     public static void main(String[] args) {
         new Calculator();        
     }
@@ -41,26 +49,110 @@ public class Calculator extends JFrame {
         this.setSize(500, 400);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+        /* UIs */
+
+        lblMain.setOpaque(true);
+        lblMain.setBackground(Color.LIGHT_GRAY);
+        lblMain.setAlignmentX(RIGHT_ALIGNMENT);
+        lblMain.setAlignmentY(CENTER_ALIGNMENT);
+
+
+        /* EVENTS */
+        ActionListener alNumbers = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!opCurrent.equals("")) {
+                    numLeft = "";
+                    opPrev = "";
+                    numRight = "";
+                    opCurrent = "";
+                }
+
+                if (opPrev.equals("")) {
+                    numLeft += e.getActionCommand();
+                } else {
+                    numRight += e.getActionCommand();
+                }
+
+                lblMain.setText(numLeft + " " + opPrev + " " + numRight + " " + opCurrent);
+           }
+        };
+
+        ActionListener alOps = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String op = e.getActionCommand();
+
+                if (op.equals("%")) {
+                    if (!numLeft.equals("") && !opPrev.equals("") && !numRight.isEmpty()) {
+                        numRight = String.valueOf( Double.parseDouble(numLeft) * ((double) Double.parseDouble(numRight) / 100) );
+                        lblMain.setText(numLeft + " " + opPrev + " " + numRight);
+                        return;
+                    } else {
+                        lblMain.setText("Invalid OP");
+                    }
+                }
+
+                String result = "";
+
+                if (opPrev.equals("")) {
+                    opPrev = op;
+                } else {
+                    opCurrent = op;
+
+                    double nl = Double.parseDouble(numLeft);
+                    double nr = Double.parseDouble(numRight);
+
+                    switch (opPrev) {
+                        case "+": result = String.valueOf( nl + nr ); break;
+                        case "-": result = String.valueOf( nl - nr ); break;
+                        case "*": result = String.valueOf( nl * nr ); break;
+                        case "/": result = String.valueOf( nl / nr ); break;
+                    }
+                }
+
+                lblMain.setText(numLeft + " " + opPrev + " " +  numRight + " " +  opCurrent + " " +  result);
+           }
+        };
+
+
+        btn0.addActionListener(alNumbers);
+        btn1.addActionListener(alNumbers);
+        btn2.addActionListener(alNumbers);
+        btn3.addActionListener(alNumbers);
+        btn4.addActionListener(alNumbers);
+        btn5.addActionListener(alNumbers);
+        btn6.addActionListener(alNumbers);
+        btn7.addActionListener(alNumbers);
+        btn8.addActionListener(alNumbers);
+        btn9.addActionListener(alNumbers);
+
+        btnEq.addActionListener(alOps);
+        btnPlus.addActionListener(alOps);
+        btnMinus.addActionListener(alOps);
+        btnTimes.addActionListener(alOps);
+        btnDivide.addActionListener(alOps);
+        btnPercent.addActionListener(alOps);
+
+
+        /* LAYOUT */
+
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.weightx = (double) 1 / 4;
         gbc.weighty = (double) 1 / 6;
         gbc.fill = GridBagConstraints.BOTH;
-        
 
         this.setLayout(gbl);
 
         // Label
-        lblMain.setOpaque(true);
-        lblMain.setBackground(Color.LIGHT_GRAY);
-        lblMain.setAlignmentX(RIGHT_ALIGNMENT);
-        lblMain.setAlignmentY(CENTER_ALIGNMENT);
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 3;
         gbc.gridheight = 2;
         this.add(lblMain, gbc);
 
+        // Reset
         gbc.gridwidth = 1;
         gbc.gridheight = 1;
 
