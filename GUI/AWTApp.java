@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Label;
 
-import javax.swing.GroupLayout.Alignment;
 
 public class AWTApp {
     public static void main(String[] args) {

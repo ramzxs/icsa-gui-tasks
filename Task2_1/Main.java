@@ -2,6 +2,7 @@ package Task2_1;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.TextField;
@@ -17,10 +18,50 @@ public class Main {
         Frame f = new Frame("AWT GUI Counter App");
         f.setSize(400, 300);
         f.setLayout(new BorderLayout());
+        // f.addWindowListener(new WindowListener() {
+        //     @Override
+        //     public void windowOpened(WindowEvent e) {
+        //         // TODO Auto-generated method stub
+                
+        //     }
+        //     @Override
+        //     public void windowIconified(WindowEvent e) {
+        //         // TODO Auto-generated method stub
+                
+        //     }
+        //     @Override
+        //     public void windowDeiconified(WindowEvent e) {
+        //         // TODO Auto-generated method stub
+                
+        //     }
+        //     @Override
+        //     public void windowActivated(WindowEvent e) {
+        //         // TODO Auto-generated method stub
+                
+        //     }
+        //     @Override
+        //     public void windowDeactivated(WindowEvent e) {
+        //         // TODO Auto-generated method stub
+                
+        //     }
+
+        //     @Override
+        //     public void windowClosed(WindowEvent e) {
+        //         // TODO Auto-generated method stub
+                
+        //     }
+        //     @Override
+        //     public void windowClosing(WindowEvent e) {
+        //         // TODO Auto-generated method stub
+        //         System.exit(0);
+        //     }
+        // });
+
         f.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 super.windowClosing(e);
+
                 System.exit(0);
             }
         });
@@ -30,6 +71,7 @@ public class Main {
         TextField counter = new TextField("0");        
         counter.setFont(font);
         counter.setEditable(false);
+        counter.setBackground(Color.WHITE);
 
         Button count = new Button("Count");
         count.setFont(font);
