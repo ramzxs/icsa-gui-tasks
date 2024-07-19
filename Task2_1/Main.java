@@ -7,6 +7,8 @@ import java.awt.Frame;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class Main {
     static int n = 0;
@@ -15,6 +17,13 @@ public class Main {
         Frame f = new Frame("AWT GUI Counter App");
         f.setSize(400, 300);
         f.setLayout(new BorderLayout());
+        f.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                super.windowClosing(e);
+                System.exit(0);
+            }
+        });
 
         Font font = new Font("Arial", Font.BOLD, 100);
 
