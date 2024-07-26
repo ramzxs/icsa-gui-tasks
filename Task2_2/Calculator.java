@@ -96,20 +96,20 @@ public class Calculator extends JFrame {
         ActionListener alOps = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String op = e.getActionCommand();
+                String OP = e.getActionCommand();
 
                 if (numLeft.equals("")) {
                     return;
                 }
 
-                if (op.equals("=")) {
+                if (OP.equals("=")) {
                     if (numRight.equals("")) {
                         return;
                     }
                 }
 
 
-                if (op.equals("%")) {
+                if (OP.equals("%")) {
                     if (!numLeft.equals("") && !opPrev.equals("") && !numRight.isEmpty()) {
                         numRight = String.valueOf( Double.parseDouble(numLeft) * ((double) Double.parseDouble(numRight) / 100) );
                         lblMain.setText(numLeft + " " + opPrev + " " + numRight);
@@ -120,15 +120,15 @@ public class Calculator extends JFrame {
                 String result = "";
 
                 if (opPrev.equals("")) {
-                    opPrev = op;                             
+                    opPrev = OP;                             
                 } else {
                     if (numRight.equals("")) {
-                        opPrev = op;
+                        opPrev = OP;
                         lblMain.setText(numLeft + " " + opPrev);
                         return;
                     }
                     
-                    opCurrent = op;
+                    opCurrent = OP;
 
                     float nl = Float.parseFloat(numLeft);
                     float nr = Float.parseFloat(numRight);                    
