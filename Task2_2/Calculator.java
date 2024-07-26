@@ -98,15 +98,9 @@ public class Calculator extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String OP = e.getActionCommand();
 
-                if (numLeft.equals("")) {
-                    return;
-                }
+                if (numLeft.equals("")) return;
 
-                if (OP.equals("=")) {
-                    if (numRight.equals("")) {
-                        return;
-                    }
-                }
+                if (OP.equals("=") && numRight.equals("")) return;
 
 
                 if (OP.equals("%")) {
@@ -146,9 +140,7 @@ public class Calculator extends JFrame {
                     if (!opCurrent.equals("=")) {
                         numLeft = result;
                         opPrev = opCurrent;
-                        numRight = "";
-                        opCurrent = "";
-                        result = "";
+                        numRight = opCurrent = result = "";
                     }
                 }
 
