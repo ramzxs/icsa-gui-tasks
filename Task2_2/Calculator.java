@@ -62,6 +62,9 @@ public class Calculator extends JFrame {
         ActionListener alNumbers = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String NUM = e.getActionCommand();
+
+                // Clear all after an operation
                 if (!opCurrent.equals("")) {
                     numLeft = "";
                     opPrev = "";
@@ -70,9 +73,17 @@ public class Calculator extends JFrame {
                 }
 
                 if (opPrev.equals("")) {
-                    numLeft += e.getActionCommand();
+                    if (NUM.equals("0") && numLeft.isEmpty()) {
+                        return;
+                    } else {
+                        numLeft += NUM;
+                    }
                 } else {
-                    numRight += e.getActionCommand();
+                    if (NUM.equals("0") && numRight.isEmpty()) {
+
+                    } else {
+                        numRight += NUM;
+                    }
                 }
 
                 lblMain.setText(numLeft + " " + opPrev + " " + numRight + " " + opCurrent);
@@ -128,6 +139,14 @@ public class Calculator extends JFrame {
 
                     // RegEx i//gm
                     result = result.replaceAll("\\.0$", "");
+
+                    if (!opCurrent.equals("=")) {
+                        numLeft = result;
+                        opPrev = opCurrent;
+                        numRight = "";
+                        opCurrent = "";
+                        result = "";
+                    }
                 }
 
                 lblMain.setText(numLeft + " " + opPrev + " " +  numRight + " " +  opCurrent + " " +  result);
