@@ -99,6 +99,11 @@ public class Calculator extends JFrame {
                 if (opPrev.equals("")) {
                     opPrev = op;
                 } else {
+                    if (numRight.equals("")) {
+                        opPrev = op;
+                        lblMain.setText(numLeft + " " + opPrev);
+                        return;
+                    }
                     opCurrent = op;
 
                     double nl = Double.parseDouble(numLeft);

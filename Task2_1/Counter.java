@@ -11,13 +11,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class Main {
+public class Counter {
     static int n = 0;
 
     public static void main(String[] args) {
         Frame f = new Frame("AWT GUI Counter App");
         f.setSize(400, 300);
         f.setLayout(new BorderLayout());
+        
         // f.addWindowListener(new WindowListener() {
         //     @Override
         //     public void windowOpened(WindowEvent e) {
