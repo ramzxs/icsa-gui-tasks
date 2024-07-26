@@ -47,6 +47,7 @@ public class Calculator extends JFrame {
     public Calculator() {
         this.setTitle("My Calculator");
         this.setSize(500, 400);
+        this.setResizable(false);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         /* UIs */
@@ -104,8 +105,9 @@ public class Calculator extends JFrame {
 
 
                 if (OP.equals("%")) {
-                    if (!numLeft.equals("") && !opPrev.equals("") && !numRight.isEmpty()) {
-                        numRight = String.valueOf( Double.parseDouble(numLeft) * ((double) Double.parseDouble(numRight) / 100) );
+                    if (!numRight.isEmpty()) {
+                        numRight = String.valueOf( Float.parseFloat(numLeft) * ((float) Float.parseFloat(numRight) / 100) );
+                        numRight = numRight.replaceAll("\\.0$", "");
                         lblMain.setText(numLeft + " " + opPrev + " " + numRight);
                     }
                     return;
