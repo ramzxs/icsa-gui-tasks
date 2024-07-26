@@ -13,7 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
 public class Calculator extends JFrame {
-    JLabel lblMain = new JLabel("Text");
+    JLabel lblMain = new JLabel("Hey!");
 
     JButton btn0 = new JButton("0"),
         btn1 = new JButton("1"),
@@ -90,6 +90,9 @@ public class Calculator extends JFrame {
            }
         };
 
+
+        // eval("12") = Number
+
         ActionListener alOps = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -127,8 +130,8 @@ public class Calculator extends JFrame {
                     
                     opCurrent = op;
 
-                    double nl = Double.parseDouble(numLeft);
-                    double nr = Double.parseDouble(numRight);                    
+                    float nl = Float.parseFloat(numLeft);
+                    float nr = Float.parseFloat(numRight);                    
 
                     switch (opPrev) {
                         case "+": result = String.valueOf( nl + nr ); break;
