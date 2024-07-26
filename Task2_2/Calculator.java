@@ -84,30 +84,40 @@ public class Calculator extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String op = e.getActionCommand();
 
+                if (numLeft.equals("")) {
+                    return;
+                }
+
+                if (op.equals("=")) {
+                    if (numRight.equals("")) {
+                        return;
+                    }
+                }
+
+
                 if (op.equals("%")) {
                     if (!numLeft.equals("") && !opPrev.equals("") && !numRight.isEmpty()) {
                         numRight = String.valueOf( Double.parseDouble(numLeft) * ((double) Double.parseDouble(numRight) / 100) );
                         lblMain.setText(numLeft + " " + opPrev + " " + numRight);
-                        return;
-                    } else {
-                        lblMain.setText("Invalid OP");
                     }
+                    return;
                 }
 
                 String result = "";
 
                 if (opPrev.equals("")) {
-                    opPrev = op;
+                    opPrev = op;                             
                 } else {
                     if (numRight.equals("")) {
                         opPrev = op;
                         lblMain.setText(numLeft + " " + opPrev);
                         return;
                     }
+                    
                     opCurrent = op;
 
                     double nl = Double.parseDouble(numLeft);
-                    double nr = Double.parseDouble(numRight);
+                    double nr = Double.parseDouble(numRight);                    
 
                     switch (opPrev) {
                         case "+": result = String.valueOf( nl + nr ); break;
@@ -115,6 +125,9 @@ public class Calculator extends JFrame {
                         case "*": result = String.valueOf( nl * nr ); break;
                         case "/": result = String.valueOf( nl / nr ); break;
                     }
+
+                    // RegEx i//gm
+                    result = result.replaceAll("\\.0$", "");
                 }
 
                 lblMain.setText(numLeft + " " + opPrev + " " +  numRight + " " +  opCurrent + " " +  result);
